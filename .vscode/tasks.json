@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "make clean",
+            "problemMatcher": []
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "make",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "make run",
+            "problemMatcher": []
+        },
+        {
+            "label": "Clean, build and run everything",
+            "dependsOn": ["clean", "build", "run"],
+            "dependsOrder": "sequence",
+            "problemMatcher": [],
+            "options": {
+                // requires the Tasks extension
+                "statusbar": {
+                    "label": "$(play) Run"
+                }
+            }
+        },
+    ]
+}
