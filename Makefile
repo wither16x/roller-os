@@ -3,7 +3,7 @@ MAKEFLAGS += --no-print-directory
 BUILD := build
 BOOTLOADER := bootloader
 
-BOOTLOADER_BIN := $(BOOTLOADER)/build/bin/bootloader
+BOOTLOADER_BIN := $(BOOTLOADER)/build/bin/bootloader.bin
 ISO := $(BUILD)/images/roller-os.iso
 
 XORRISO := xorriso -as mkisofs
@@ -11,7 +11,7 @@ XORRISO := xorriso -as mkisofs
 all: $(ISO)
 
 $(ISO): $(BOOTLOADER)
-	@echo "[GLOBAL] Generating ISO image: $(ISO)"
+	@echo "[Global] Generating ISO image: $(ISO)"
 	@mkdir -p $(BUILD)/iso_root/boot $(dir $@)
 	@cp $(BOOTLOADER_BIN) $(BUILD)/iso_root/boot/bootloader
 	@$(XORRISO) -R \
@@ -26,10 +26,11 @@ $(ISO): $(BOOTLOADER)
 		$(BUILD)/iso_root
 
 $(BOOTLOADER):
+	@echo "[Global] Building bootloader"
 	@$(MAKE) -C $(BOOTLOADER)
 
 clean:
-	@echo "[GLOBAL] Cleaning"
+	@echo "[Global] Cleaning"
 	@$(MAKE) -C $(BOOTLOADER) clean
 	@rm -rf $(BUILD)
 
