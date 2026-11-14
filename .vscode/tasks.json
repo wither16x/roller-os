@@ -24,6 +24,12 @@
             "problemMatcher": []
         },
         {
+            "label": "run-debug",
+            "type": "shell",
+            "command": "make run-debug",
+            "problemMatcher": []
+        },
+        {
             "label": "Clean, build and run everything",
             "dependsOn": ["clean", "build", "run"],
             "dependsOrder": "sequence",
@@ -35,5 +41,16 @@
                 }
             }
         },
+        {
+            "label": "Clean, build and debug",
+            "dependsOn": ["clean", "build", "run-debug"],
+            "dependsOrder": "sequence",
+            "problemMatcher": [],
+            "options": {
+                "statusbar": {
+                    "label": "$(play) Debug"
+                }
+            }
+        }
     ]
 }

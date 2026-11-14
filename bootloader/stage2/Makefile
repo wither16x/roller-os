@@ -19,7 +19,7 @@ $(BIN_DIR)/%.bin: ./%.asm
 	@nasm -f bin -I$(LIB) -o $@ $<
 
 clean:
-	@echo "[Bootloader] Cleaning"
+	@echo "[Bootloader.Stage2] Cleaning"
 	@rm -rf $(BUILD)
 
 .PHONY: all clean

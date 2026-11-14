@@ -7,6 +7,7 @@ BOOTLOADER_BIN := $(BOOTLOADER)/build/bin/bootloader.bin
 ISO := $(BUILD)/images/roller-os.iso
 
 XORRISO := xorriso -as mkisofs
+QEMU := qemu-system-x86_64
 
 all: $(ISO)
 
@@ -35,6 +36,9 @@ clean:
 	@rm -rf $(BUILD)
 
 run:
-	qemu-system-x86_64 -cdrom $(ISO) -m 2G
+	$(QEMU) -cdrom $(ISO) -m 2G
 
-.PHONY: all clean $(BOOTLOADER) run
+run-debug:
+	$(QEMU) -cdrom $(ISO) -m 2G -d int -no-reboot
+
+.PHONY: all clean $(BOOTLOADER) run run-debug

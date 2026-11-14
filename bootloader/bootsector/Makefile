@@ -11,7 +11,7 @@ $(TARGET): $(BOOTSECT)
 	@nasm -f bin -I$(LIB) -o $(TARGET) $(BOOTSECT)
 
 clean:
-	@echo "[Bootloader] Cleaning"
+	@echo "[Bootloader.BootSector] Cleaning"
 	@rm -rf $(BUILD)
 
 .PHONY: all clean
